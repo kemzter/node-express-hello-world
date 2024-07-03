@@ -16,7 +16,7 @@ pipeline{
         }
         stage("Deploy") {
             steps {
-                sh 'docker run -d --rm --name node-app -p 3000:3000 -v $(pwd):/home/node/app node:lts-slim npm start'
+                sh 'docker run --rm --name node-app -p 3000:3000 -v $(pwd):/home/node/app node:lts-slim npm start'
             }
         }
     }
