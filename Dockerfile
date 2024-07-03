@@ -1,13 +1,12 @@
 FROM node:lts-slim
 
-COPY . /home/node/app
-WORKDIR /home/node/app
 EXPOSE 3000
-
+WORKDIR /home/node/app
+COPY ./package.json /home/node/app
 RUN <<EOF
 npm install
 EOF
 
-COPY node_modules /home/node/app/node_modules
+COPY . /home/node/app
 
 CMD ["npm", "start"]
