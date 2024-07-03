@@ -7,7 +7,9 @@ pipeline{
             steps{
                 nodejs('nodejs') {
                     echo 'Building...'
-                    sh 'npm install'
+                    sh '''
+                    w
+                    npm install'''
                     echo 'Built'
                 }
             }
