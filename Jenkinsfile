@@ -14,10 +14,7 @@ pipeline{
         }
         stage("Deploy") {
             steps {
-                nodejs('nodejs') {
-                    echo 'Starting...'
-                    sh 'npm start'
-                }
+                sh 'docker run -d --rm --name node-app -p 3000:3000 -v $(pwd):/home/node/app node:lts-slim start'
             }
         }
     }
