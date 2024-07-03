@@ -5,13 +5,15 @@ pipeline{
     stages{
         stage("Cleanup") {
             steps {
-                sh 'docker stop node-app'
+                sh 'docker stop node-app || true'
                 sh 'docker rm node-app || true'
             }
         }
         stage("Build") {
             steps{
-                image = docker.build("my-node-app")
+                script {
+                    image = docker.build("my-node-app")
+                }
             }
         }
         stage("Deploy") {
